@@ -58,9 +58,21 @@ def edit_task():
         index = listbox.curselection()
         edited_task = entry.get()
         if edited_task:
+            original_task = listbox.get(index)
             listbox.delete(index)
             listbox.insert(index, edited_task)
             entry.delete(0, tk.END)
+            cursor.execute(
+                '''
+                UPDATE
+                    tasks
+                SET
+                    task = ?
+                WHERE
+                    task = ?
+                ''', (edited_task, original_task)
+            )
+            conn.commit()
         else:
             messagebox.showwarning("Invalid Input", "Please enter a task.")
     except tk.TclError:

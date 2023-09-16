@@ -1,0 +1,5 @@
+# Todo list
+
+This app use tkiner to create todo list with basic GUI. It allows to commit CRUD operations with tasks that stored in sqllite3 database.
+
+Demonstration of the interface of this app can be found in demonstration.png image.
